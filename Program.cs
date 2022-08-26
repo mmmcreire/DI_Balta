@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 using(ServiceProvider container = RegisterServices())
 {
-
     var primService = new PrimaryService();
     var secService = new SecondaryService(primService);
     var secService2 = new SecondaryService(primService);
@@ -21,31 +20,6 @@ using(ServiceProvider container = RegisterServices())
 
     Console.WriteLine("\n*****     Tertiary Service ID: ADD TRANSIENT    *****");
     Console.WriteLine(terService.Id + " - Tertiary Service ID");
-
-    /*
-    var primController = container.GetRequiredService<PrimaryService>();
-    string primResult = primController.Id.ToString();
-    Console.WriteLine("Primary Service ID: " + primResult);
-    Console.WriteLine("----------------------------------------------------------");
-    
-    var secController = container.GetRequiredService<SecondaryService>();
-    string secPrimResult = secController.PrimaryServiceId.ToString();
-    string secResult = secController.Id.ToString();
-    Console.WriteLine("Primary Service ID:" + secPrimResult);
-    Console.WriteLine("Secondary Service ID:  " + secResult);
-    Console.WriteLine("----------------------------------------------------------");
-
-    var terController = container.GetRequiredService<TertiaryService>();
-
-    string terPrimResult = terController.PrimaryServiceId.ToString();
-    string terSecResult = terController.SecondaryServiceId.ToString();
-    string terSecResult2 = terController.SecondaryServiceNewInstanceID.ToString();
-    string terResult = terController.Id.ToString();
-    Console.WriteLine("Primary Service ID: " + terPrimResult);
-    Console.WriteLine("Secondary Service ID: " + terSecResult);
-    Console.WriteLine("Secondary Service ID New Instance: " + terSecResult2);
-    Console.WriteLine("Tertiary Service ID: " + terResult);
-    Console.WriteLine("----------------------------------------------------------");*/
 }
 
 static ServiceProvider RegisterServices()
