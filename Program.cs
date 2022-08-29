@@ -9,17 +9,17 @@ using(ServiceProvider container = RegisterServices())
     var terService = new TertiaryService(primService, secService, secService2);
 
     Console.WriteLine("*****     Primary Service ID: ADD SINGLETON     *****");
-    Console.WriteLine(primService.Id + " - Primary Service ID - First instance");
-    Console.WriteLine(secService.PrimaryServiceId + " - Primary Service ID - Second instance");
-    Console.WriteLine(terService.PrimaryServiceId + " - Primary Service ID - Third instance");
+    Console.WriteLine(primService.Id + " - Primary Service ID - First instance called in Primary services");
+    Console.WriteLine(secService.PrimaryServiceId + " - Primary Service ID - Second instance called in secondary services");
+    Console.WriteLine(terService.PrimaryServiceId + " - Primary Service ID - Third instance called in tertiary services");
 
     Console.WriteLine("\n*****     Secondary Service ID: ADD SCOPED      *****");
-    Console.WriteLine(secService.Id + " - Secondary Service ID - Second instance");
-    Console.WriteLine(terService.SecondaryServiceId + " - Secondary Service ID - Thrid instance");
-    Console.WriteLine(terService.SecondaryServiceNewInstanceID + " - Secondary Service ID - New instance inside third instance");
+    Console.WriteLine(secService.Id + " - Secondary Service ID - First instance called in secondary services");
+    Console.WriteLine(terService.SecondaryServiceId + " - Secondary Service ID - Second instance called in tertiary services");
+    Console.WriteLine(terService.SecondaryServiceNewInstanceID + " - Secondary Service ID - New instance inside tertiary service");
 
     Console.WriteLine("\n*****     Tertiary Service ID: ADD TRANSIENT    *****");
-    Console.WriteLine(terService.Id + " - Tertiary Service ID");
+    Console.WriteLine(terService.Id + " - Tertiary Service ID - allways a new instance");
 }
 
 static ServiceProvider RegisterServices()
